@@ -2,6 +2,8 @@ ofuton
 =====
 
 [![Build Status](https://travis-ci.org/totem3/ofuton.svg?branch=master)](https://travis-ci.org/totem3/ofuton)
+[![](https://img.shields.io/crates/v/ofuton.svg)](https://crates.io/crates/ofuton)
+[![](https://img.shields.io/crates/l/ofuton.svg)](https://crates.io/crates/ofuton)
 
 `ofuton` provides *N*-dimensional FFT.
 

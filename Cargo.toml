@@ -1,0 +1,14 @@
+[package]
+name = "ofuton"
+version = "0.1.0"
+authors = ["Takafumi Hirata <takhirata6@gmail.com>"]
+license = "Apache-2.0/MIT"
+readme = "README.md"
+categories = ["science"]
+repository = "https://github.com/totem3/ofuton"
+description = "N-dimensional FFT"
+keywords = ["fft"]
+
+[dependencies]
+rustfft = "2.0.0"
+ndarray = "0.10.13"

@@ -14,30 +14,30 @@ fn _fft<T: FFTnum>(input: &mut [Complex<T>], output: &mut [Complex<T>], inverse:
     fft.process(input, output);
 }
 
-fn fft<T: FFTnum>(input: &mut [Complex<T>], output: &mut [Complex<T>]) {
+pub fn fft<T: FFTnum>(input: &mut [Complex<T>], output: &mut [Complex<T>]) {
     _fft(input, output, false);
 }
 
-fn ifft<T: FFTnum + From<u32>>(input: &mut [Complex<T>], output: &mut [Complex<T>]) {
+pub fn ifft<T: FFTnum + From<u32>>(input: &mut [Complex<T>], output: &mut [Complex<T>]) {
     _fft(input, output, true);
     for v in output.iter_mut() {
         *v = v.unscale(T::from(input.len() as u32));
     }
 }
 
-fn fft2(input: &mut ArrayViewMut2<Complex<f64>>, output: &mut ArrayViewMut2<Complex<f64>>) {
+pub fn fft2(input: &mut ArrayViewMut2<Complex<f64>>, output: &mut ArrayViewMut2<Complex<f64>>) {
     fftnd(input, output, &[0,1]);
 }
 
-fn ifft2(input: &mut ArrayViewMut2<Complex<f64>>, output: &mut ArrayViewMut2<Complex<f64>>) {
+pub fn ifft2(input: &mut ArrayViewMut2<Complex<f64>>, output: &mut ArrayViewMut2<Complex<f64>>) {
     ifftnd(input, output, &[1,0]);
 }
 
-fn fftn<D: Dimension>(input: &mut ArrayViewMut<Complex<f64>, D>, output: &mut ArrayViewMut<Complex<f64>, D>, axis: usize) {
+pub fn fftn<D: Dimension>(input: &mut ArrayViewMut<Complex<f64>, D>, output: &mut ArrayViewMut<Complex<f64>, D>, axis: usize) {
     _fftn(input, output, axis, false);
 }
 
-fn ifftn<D: Dimension>(input: &mut ArrayViewMut<Complex<f64>, D>, output: &mut ArrayViewMut<Complex<f64>, D>, axis: usize) {
+pub fn ifftn<D: Dimension>(input: &mut ArrayViewMut<Complex<f64>, D>, output: &mut ArrayViewMut<Complex<f64>, D>, axis: usize) {
     _fftn(input, output, axis, true);
 }
 
@@ -49,11 +49,11 @@ fn _fftn<D: Dimension>(input: &mut ArrayViewMut<Complex<f64>, D>, output: &mut A
     }
 }
 
-fn fftnd<D: Dimension>(input: &mut ArrayViewMut<Complex<f64>, D>, output: &mut ArrayViewMut<Complex<f64>, D>, axes: &[usize]) {
+pub fn fftnd<D: Dimension>(input: &mut ArrayViewMut<Complex<f64>, D>, output: &mut ArrayViewMut<Complex<f64>, D>, axes: &[usize]) {
     _fftnd(input, output, axes, false);
 }
 
-fn ifftnd<D: Dimension>(input: &mut ArrayViewMut<Complex<f64>, D>, output: &mut ArrayViewMut<Complex<f64>, D>, axes: &[usize]) {
+pub fn ifftnd<D: Dimension>(input: &mut ArrayViewMut<Complex<f64>, D>, output: &mut ArrayViewMut<Complex<f64>, D>, axes: &[usize]) {
     _fftnd(input, output, axes, true);
 }
 
